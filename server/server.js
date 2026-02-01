@@ -45,6 +45,11 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
+
+// Serve static files from the React app build folder (before API routes)
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+// API routes
 app.use("/api/auth", authRouter);
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
@@ -58,10 +63,7 @@ app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
 
-// Serve static files from the React app build folder
-app.use(express.static(path.join(__dirname, "../client/build")));
-
-// Catch-all handler: send back React's index.html for any request that doesn't match API routes
+// SPA Catch-all: send back React's index.html for any non-API request (MUST BE LAST)
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
