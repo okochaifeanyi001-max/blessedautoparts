@@ -13,4 +13,10 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
+  preview: {
+    port: 5173,
+    strictPort: true,
+    // Fallback to index.html for SPA routing
+    historyApiFallback: true,
+  },
 });
