@@ -20,17 +20,17 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
       : 0;
 
   return (
-    <SheetContent className="sm:max-w-md">
+    <SheetContent className="sm:max-w-md overflow-y-auto">
       <SheetHeader>
-        <SheetTitle>Your Cart</SheetTitle>
+        <SheetTitle className="text-lg md:text-xl">Your Cart</SheetTitle>
       </SheetHeader>
-      <div className="mt-8 space-y-4">
+      <div className="mt-6 md:mt-8 space-y-3 md:space-y-4">
         {cartItems && cartItems.length > 0
-          ? cartItems.map((item) => <UserCartItemsContent cartItem={item} />)
-          : null}
+          ? cartItems.map((item) => <UserCartItemsContent key={item._id} cartItem={item} />)
+          : <p className="text-sm md:text-base text-muted-foreground text-center py-4">Your cart is empty</p>}
       </div>
-      <div className="mt-8 space-y-4">
-        <div className="flex justify-between">
+      <div className="mt-6 md:mt-8 space-y-4">
+        <div className="flex justify-between text-base md:text-lg">
           <span className="font-bold">Total</span>
           <span className="font-bold">₦{totalCartAmount}</span>
         </div>
@@ -40,7 +40,8 @@ function UserCartWrapper({ cartItems, setOpenCartSheet }) {
           navigate("/shop/checkout");
           setOpenCartSheet(false);
         }}
-        className="w-full mt-6"
+        className="w-full mt-4 md:mt-6 text-sm md:text-base py-5 md:py-6"
+        disabled={!cartItems || cartItems.length === 0}
       >
         Checkout
       </Button>

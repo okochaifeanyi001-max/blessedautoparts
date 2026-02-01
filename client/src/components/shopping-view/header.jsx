@@ -51,11 +51,11 @@ function MenuItems() {
   }
 
   return (
-    <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
+    <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-4 lg:gap-6 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className="text-sm font-medium cursor-pointer"
+          className="text-base lg:text-sm font-medium cursor-pointer hover:opacity-70 transition-opacity py-2 lg:py-0"
           key={menuItem.id}
         >
           {menuItem.label}
@@ -94,8 +94,8 @@ function HeaderRightContent() {
           size="icon"
           className="relative"
         >
-          <ShoppingCart className="w-6 h-6" />
-          <span className="absolute top-[-5px] right-[2px] font-bold text-sm">
+          <ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6" />
+          <span className="absolute top-[-8px] right-[-8px] bg-black text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
             {isAuthenticated ? (cartItems?.items?.length || 0) : 0}
           </span>
           <span className="sr-only">User cart</span>
@@ -152,8 +152,8 @@ function ShoppingHeader() {
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <HousePlug className="h-6 w-6" />
-          <span className="font-bold">BlessedManAutos</span>
+          <HousePlug className="h-5 w-5 md:h-6 md:w-6" />
+          <span className="font-bold text-sm md:text-base lg:text-lg">BlessedManAutos</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>

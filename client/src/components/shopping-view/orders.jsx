@@ -41,65 +41,69 @@ function ShoppingOrders() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Order History</CardTitle>
+      <CardHeader className="px-4 md:px-6">
+        <CardTitle className="text-lg md:text-xl">Order History</CardTitle>
       </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Order ID</TableHead>
-              <TableHead>Order Date</TableHead>
-              <TableHead>Order Status</TableHead>
-              <TableHead>Order Price</TableHead>
-              <TableHead>
-                <span className="sr-only">Details</span>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {orderList && orderList.length > 0
-              ? orderList.map((orderItem) => (
-                  <TableRow>
-                    <TableCell>{orderItem?._id}</TableCell>
-                    <TableCell>{orderItem?.orderDate.split("T")[0]}</TableCell>
-                    <TableCell>
-                      <Badge
-                        className={`py-1 px-3 ${
-                          orderItem?.orderStatus === "confirmed"
-                            ? "bg-green-500"
-                            : orderItem?.orderStatus === "rejected"
-                            ? "bg-red-600"
-                            : "bg-black"
-                        }`}
-                      >
-                        {orderItem?.orderStatus}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>₦{orderItem?.totalAmount}</TableCell>
-                    <TableCell>
-                      <Dialog
-                        open={openDetailsDialog}
-                        onOpenChange={() => {
-                          setOpenDetailsDialog(false);
-                          dispatch(resetOrderDetails());
-                        }}
-                      >
-                        <Button
-                          onClick={() =>
-                            handleFetchOrderDetails(orderItem?._id)
-                          }
+      <CardContent className="px-2 md:px-6">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="text-xs md:text-sm whitespace-nowrap">Order ID</TableHead>
+                <TableHead className="text-xs md:text-sm whitespace-nowrap">Order Date</TableHead>
+                <TableHead className="text-xs md:text-sm whitespace-nowrap">Status</TableHead>
+                <TableHead className="text-xs md:text-sm whitespace-nowrap">Price</TableHead>
+                <TableHead className="text-xs md:text-sm">
+                  <span className="sr-only">Details</span>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {orderList && orderList.length > 0
+                ? orderList.map((orderItem) => (
+                    <TableRow key={orderItem?._id}>
+                      <TableCell className="text-xs md:text-sm font-mono">{orderItem?._id.slice(-8)}</TableCell>
+                      <TableCell className="text-xs md:text-sm whitespace-nowrap">{orderItem?.orderDate.split("T")[0]}</TableCell>
+                      <TableCell>
+                        <Badge
+                          className={`py-1 px-2 text-xs ${
+                            orderItem?.orderStatus === "confirmed"
+                              ? "bg-green-500"
+                              : orderItem?.orderStatus === "rejected"
+                              ? "bg-red-600"
+                              : "bg-black"
+                          }`}
                         >
-                          View Details
-                        </Button>
-                        <ShoppingOrderDetailsView orderDetails={orderDetails} />
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                ))
-              : null}
-          </TableBody>
-        </Table>
+                          {orderItem?.orderStatus}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-xs md:text-sm font-semibold whitespace-nowrap">₦{orderItem?.totalAmount}</TableCell>
+                      <TableCell>
+                        <Dialog
+                          open={openDetailsDialog}
+                          onOpenChange={() => {
+                            setOpenDetailsDialog(false);
+                            dispatch(resetOrderDetails());
+                          }}
+                        >
+                          <Button
+                            onClick={() =>
+                              handleFetchOrderDetails(orderItem?._id)
+                            }
+                            size="sm"
+                            className="text-xs md:text-sm whitespace-nowrap"
+                          >
+                            View Details
+                          </Button>
+                          <ShoppingOrderDetailsView orderDetails={orderDetails} />
+                        </Dialog>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                : null}
+            </TableBody>
+          </Table>
+        </div>
       </CardContent>
     </Card>
   );

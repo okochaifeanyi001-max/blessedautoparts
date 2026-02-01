@@ -43,26 +43,26 @@ function ProductImageSlider({ images }) {
           <Button
             variant="outline"
             size="icon"
-            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/80 hover:bg-white"
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/80 hover:bg-white h-8 w-8 md:h-10 md:w-10"
             onClick={prevImage}
           >
-            <ChevronLeftIcon className="w-4 h-4" />
+            <ChevronLeftIcon className="w-3 h-3 md:w-4 md:h-4" />
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/80 hover:bg-white"
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/80 hover:bg-white h-8 w-8 md:h-10 md:w-10"
             onClick={nextImage}
           >
-            <ChevronRightIcon className="w-4 h-4" />
+            <ChevronRightIcon className="w-3 h-3 md:w-4 md:h-4" />
           </Button>
 
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {validImages.map((_, index) => (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-2 h-2 rounded-full transition-all ${
                   index === currentImageIndex ? "bg-white" : "bg-white/50"
                 }`}
                 onClick={() => setCurrentImageIndex(index)}

@@ -5,99 +5,86 @@ import ShoppingOrders from "@/components/shopping-view/orders";
 
 function ShoppingAccount() {
   return (
-    <div style={{
-      minHeight: '100vh',
-      backgroundColor: '#f8f9fa'
-    }}>
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Banner Section */}
-      <div style={{
-        position: 'relative',
-        height: '350px',
-        width: '100%',
-        overflow: 'hidden',
-        boxShadow: 'inset 0 0 0 1000px rgba(0, 0, 0, 0.3)'
-      }}>
+      <div className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] w-full overflow-hidden shadow-[inset_0_0_0_1000px_rgba(0,0,0,0.3)]">
         <img
           src={accImg}
-          style={{
-            height: '100%',
-            width: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            filter: 'brightness(0.8)'
-          }}
+          className="h-full w-full object-cover object-center brightness-75"
           alt="Account Banner"
         />
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          textAlign: 'center',
-          color: 'white',
-          zIndex: 2
-        }}>
-          <h1 style={{
-            fontSize: '3rem',
-            fontWeight: 'bold',
-            marginBottom: '10px',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
-          }}>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 drop-shadow-lg">
             My Account
           </h1>
-          <p style={{
-            fontSize: '1.2rem',
-            opacity: 0.9,
-            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-          }}>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl opacity-90 drop-shadow-md">
             Manage your orders and addresses
           </p>
         </div>
       </div>
 
       {/* Main Content Container */}
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '40px 20px'
-      }}>
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '12px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-          overflow: 'hidden',
-          border: '1px solid #e9ecef'
-        }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-10">
+        <div className="bg-white rounded-lg md:rounded-xl shadow-lg overflow-hidden border border-gray-200">
           {/* Account Navigation Tabs */}
-          <Tabs defaultValue="orders" style={{ width: '100%' }}>
-            <div style={{
-              backgroundColor: '#f8f9fa',
-              borderBottom: '1px solid #e9ecef',
-              padding: '0 24px'
-            }}>
-              <TabsList style={{
-                backgroundColor: 'transparent',
-                border: 'none',
-                justifyContent: 'flex-start',
-                gap: '8px'
-              }}>
+          <Tabs defaultValue="orders" className="w-full">
+            <div className="bg-gray-50 border-b border-gray-200 px-4 sm:px-6">
+              <TabsList className="bg-transparent border-none justify-start gap-2 w-full sm:w-auto overflow-x-auto">
                 <TabsTrigger
                   value="orders"
-                  style={{
-                    padding: '12px 24px',
-                    borderRadius: '8px 8px 0 0',
-                    fontWeight: '600',
-                    fontSize: '16px',
-                    color: '#6c757d',
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                    borderBottom: '3px solid transparent',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer'
-                  }}
-                  className="data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:border-blue-600 data-[state=active]:shadow-none"
+                  className="px-4 sm:px-6 py-3 rounded-t-lg font-semibold text-sm sm:text-base text-gray-600 bg-transparent border-none border-b-[3px] border-transparent transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:border-blue-600 whitespace-nowrap"
                 >
-                  📦 My Orders
+                  <span className="hidden sm:inline">📦 My Orders</span>
+                  <span className="sm:hidden">📦 Orders</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="address"
+                  className="px-4 sm:px-6 py-3 rounded-t-lg font-semibold text-sm sm:text-base text-gray-600 bg-transparent border-none border-b-[3px] border-transparent transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:border-blue-600 whitespace-nowrap"
+                >
+                  <span className="hidden sm:inline">📍 My Addresses</span>
+                  <span className="sm:hidden">📍 Addresses</span>
+                </TabsTrigger>
+              </TabsList>
+            </div>
+
+            {/* Tab Content */}
+            <div className="p-4 sm:p-6 md:p-8">
+              <TabsContent
+                value="orders"
+                className="m-0 animate-fadeIn"
+              >
+                <div className="bg-gray-50 rounded-lg p-4 sm:p-5 md:p-6 mb-4 md:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+                    Order History
+                  </h2>
+                  <p className="text-sm sm:text-base text-gray-600 m-0">
+                    View and track all your orders
+                  </p>
+                </div>
+                <ShoppingOrders />
+              </TabsContent>
+
+              <TabsContent
+                value="address"
+                className="m-0 animate-fadeIn"
+              >
+                <div className="bg-gray-50 rounded-lg p-4 sm:p-5 md:p-6 mb-4 md:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+                    Address Management
+                  </h2>
+                  <p className="text-sm sm:text-base text-gray-600 m-0">
+                    Manage your delivery addresses
+                  </p>
+                </div>
+                <Address />
+              </TabsContent>
+            </div>
+          </Tabs>
+        </div>
+      </div>
+    </div>
+  );
+}
                 </TabsTrigger>
                 <TabsTrigger
                   value="address"
@@ -187,34 +174,5 @@ function ShoppingAccount() {
           </Tabs>
         </div>
       </div>
-
-      {/* Add some custom CSS for animations */}
-      <style>
-        {`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-
-          .data-[state=active]:bg-white {
-            background-color: white !important;
-          }
-
-          .data-[state=active]:text-blue-600 {
-            color: #2563eb !important;
-          }
-
-          .data-[state=active]:border-blue-600 {
-            border-bottom-color: #2563eb !important;
-          }
-
-          .data-[state=active]:shadow-none {
-            box-shadow: none !important;
-          }
-        `}
-      </style>
-    </div>
-  );
-}
 
 export default ShoppingAccount;

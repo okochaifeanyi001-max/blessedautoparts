@@ -16,22 +16,22 @@ function AddressCard({
           ? () => setCurrentSelectedAddress(addressInfo)
           : null
       }
-      className={`cursor-pointer border-red-700 ${
+      className={`cursor-pointer ${
         selectedId?._id === addressInfo?._id
-          ? "border-red-900 border-[4px]"
+          ? "border-red-900 border-[3px] md:border-[4px]"
           : "border-black"
       }`}
     >
-      <CardContent className="grid p-4 gap-4">
-        <Label>Address: {addressInfo?.address}</Label>
-        <Label>City: {addressInfo?.city}</Label>
-        <Label>pincode: {addressInfo?.pincode}</Label>
-        <Label>Phone: {addressInfo?.phone}</Label>
-        <Label>Notes: {addressInfo?.notes}</Label>
+      <CardContent className="grid p-3 md:p-4 gap-2 md:gap-3">
+        <Label className="text-xs md:text-sm break-words">Address: {addressInfo?.address}</Label>
+        <Label className="text-xs md:text-sm">City: {addressInfo?.city}</Label>
+        <Label className="text-xs md:text-sm">Pincode: {addressInfo?.pincode}</Label>
+        <Label className="text-xs md:text-sm">Phone: {addressInfo?.phone}</Label>
+        <Label className="text-xs md:text-sm break-words">Notes: {addressInfo?.notes}</Label>
       </CardContent>
-      <CardFooter className="p-3 flex justify-between">
-        <Button onClick={() => handleEditAddress(addressInfo)}>Edit</Button>
-        <Button onClick={() => handleDeleteAddress(addressInfo)}>Delete</Button>
+      <CardFooter className="p-2 md:p-3 flex gap-2 justify-between">
+        <Button onClick={() => handleEditAddress(addressInfo)} className="flex-1 text-xs md:text-sm py-2">Edit</Button>
+        <Button onClick={() => handleDeleteAddress(addressInfo)} variant="destructive" className="flex-1 text-xs md:text-sm py-2">Delete</Button>
       </CardFooter>
     </Card>
   );

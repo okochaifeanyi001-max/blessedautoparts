@@ -124,27 +124,29 @@ function ShoppingCheckout() {
 
   return (
     <div className="flex flex-col">
-      <div className="relative h-[300px] w-full overflow-hidden">
+      <div className="relative h-[200px] sm:h-[250px] md:h-[300px] w-full overflow-hidden">
         <img src={img} className="h-full w-full object-cover object-center" />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 p-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mt-4 md:mt-6 p-4 md:p-6">
         <Address
           selectedId={currentSelectedAddress}
           setCurrentSelectedAddress={setCurrentSelectedAddress}
         />
-        <div className="flex flex-col gap-4">
-          {cartItems && cartItems.items && cartItems.items.length > 0
-            ? cartItems.items.map((item) => (
-                <UserCartItemsContent cartItem={item} />
-              ))
-            : null}
-          <div className="mt-8 space-y-4">
-            <div className="flex justify-between">
+        <div className="flex flex-col gap-3 md:gap-4">
+          <div className="space-y-3">
+            {cartItems && cartItems.items && cartItems.items.length > 0
+              ? cartItems.items.map((item) => (
+                  <UserCartItemsContent key={item._id} cartItem={item} />
+                ))
+              : null}
+          </div>
+          <div className="mt-4 md:mt-6 space-y-4">
+            <div className="flex justify-between text-base md:text-lg">
               <span className="font-bold">Total</span>
               <span className="font-bold">₦{totalCartAmount}</span>
             </div>
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Payment Method</h3>
+            <div className="space-y-3 md:space-y-4">
+              <h3 className="text-base md:text-lg font-semibold">Payment Method</h3>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <input
@@ -156,7 +158,7 @@ function ShoppingCheckout() {
                     onChange={(e) => setSelectedPaymentMethod(e.target.value)}
                     className="h-4 w-4"
                   />
-                  <label htmlFor="cod" className="text-sm font-medium">
+                  <label htmlFor="cod" className="text-sm md:text-base font-medium cursor-pointer">
                     Make Transfer
                   </label>
                 </div>
@@ -177,7 +179,7 @@ function ShoppingCheckout() {
                     className="h-4 w-4"
                     disabled
                   />
-                  <label htmlFor="paypal" className="text-sm font-medium opacity-50">
+                  <label htmlFor="paypal" className="text-sm md:text-base font-medium opacity-50">
                     PayPal (Disabled)
                   </label>
                 </div>
@@ -198,7 +200,7 @@ function ShoppingCheckout() {
                     className="h-4 w-4"
                     disabled
                   />
-                  <label htmlFor="paystack" className="text-sm font-medium opacity-50">
+                  <label htmlFor="paystack" className="text-sm md:text-base font-medium opacity-50">
                     Paystack (Disabled)
                   </label>
                 </div>
@@ -219,7 +221,7 @@ function ShoppingCheckout() {
                     className="h-4 w-4"
                     disabled
                   />
-                  <label htmlFor="flutterwave" className="text-sm font-medium opacity-50">
+                  <label htmlFor="flutterwave" className="text-sm md:text-base font-medium opacity-50">
                     Flutterwave (Disabled)
                   </label>
                 </div>
@@ -229,7 +231,7 @@ function ShoppingCheckout() {
           <div className="mt-4 w-full">
             <Button
               onClick={handleInitiatePayment}
-              className="w-full"
+              className="w-full text-sm md:text-base py-5 md:py-6"
               disabled={
                 selectedPaymentMethod === "paypal" ||
                 selectedPaymentMethod === "paystack" ||

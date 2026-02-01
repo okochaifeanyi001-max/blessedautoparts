@@ -112,11 +112,12 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
   console.log(addressList, "addressList");
 
   return (
-    <Card>
-      <div className="mb-5 p-3 grid grid-cols-1 sm:grid-cols-2  gap-2">
+    <Card className="w-full">
+      <div className="mb-4 md:mb-5 p-3 md:p-4 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
         {addressList && addressList.length > 0
           ? addressList.map((singleAddressItem) => (
               <AddressCard
+                key={singleAddressItem._id}
                 selectedId={selectedId}
                 handleDeleteAddress={handleDeleteAddress}
                 addressInfo={singleAddressItem}
@@ -126,12 +127,12 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
             ))
           : null}
       </div>
-      <CardHeader>
-        <CardTitle>
+      <CardHeader className="px-4 md:px-6">
+        <CardTitle className="text-lg md:text-xl">
           {currentEditedId !== null ? "Edit Address" : "Add New Address"}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-3 px-4 md:px-6">
         <CommonForm
           formControls={addressFormControls}
           formData={formData}
