@@ -3,19 +3,17 @@ import bannerOne from "../../assets/banner-1.webp";
 import bannerTwo from "../../assets/banner-2.webp";
 import bannerThree from "../../assets/banner-3.webp";
 import {
-  Airplay,
-  BabyIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  CloudLightning,
-  Heater,
-  Images,
-  Shirt,
-  ShirtIcon,
-  ShoppingBasket,
-  UmbrellaIcon,
-  WashingMachine,
-  WatchIcon,
+  Settings,
+  Cog,
+  Zap,
+  Wind,
+  Snowflake,
+  Gauge,
+  Package,
+  Car,
+  Truck,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
@@ -32,22 +30,22 @@ import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
-  { id: "engines", label: "Engines", icon: ShirtIcon },
-  { id: "gearboxes", label: "Gearboxes", icon: CloudLightning },
-  { id: "alternators", label: "Alternators", icon: BabyIcon },
-  { id: "radiators", label: "Radiators", icon: WatchIcon },
-  { id: "ac_compressors", label: "AC Compressors", icon: UmbrellaIcon },
-  { id: "steering_pumps", label: "Steering Pumps", icon: Heater },
-  { id: "others", label: "Others", icon: Images },
+  { id: "engines", label: "Engines", icon: Settings },
+  { id: "gearboxes", label: "Gearboxes", icon: Cog },
+  { id: "alternators", label: "Alternators", icon: Zap },
+  { id: "radiators", label: "Radiators", icon: Wind },
+  { id: "ac_compressors", label: "AC Compressors", icon: Snowflake },
+  { id: "steering_pumps", label: "Steering Pumps", icon: Gauge },
+  { id: "others", label: "Others", icon: Package },
 ];
 
 const brandsWithIcon = [
-  { id: "ford", label: "Ford", icon: Shirt },
-  { id: "chevrolet", label: "Chevrolet", icon: WashingMachine },
-  { id: "dodge", label: "Dodge", icon: ShoppingBasket },
-  { id: "jeep", label: "Jeep", icon: Airplay },
-  { id: "cadillac", label: "Cadillac", icon: Images },
-  { id: "gmc", label: "GMC", icon: Heater },
+  { id: "ford", label: "Ford", icon: Car },
+  { id: "chevrolet", label: "Chevrolet", icon: Car },
+  { id: "dodge", label: "Dodge", icon: Car },
+  { id: "jeep", label: "Jeep", icon: Truck },
+  { id: "cadillac", label: "Cadillac", icon: Car },
+  { id: "gmc", label: "GMC", icon: Truck },
 ];
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
