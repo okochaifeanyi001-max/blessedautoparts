@@ -8,12 +8,12 @@ function AuthLayout() {
           <div className="mb-6">
             <img
               src="/src/assets/blessedman.jpg"
-              alt="BlessedManAutos Logo"
+              alt="EMABLEPARTS Logo"
               className="w-32 h-32 mx-auto rounded-full shadow-lg object-cover"
             />
           </div>
           <h1 className="text-4xl font-extrabold tracking-tight">
-            Welcome to BlessedManAutos
+            Welcome to EMABLEPARTS
           </h1>
         </div>
       </div>

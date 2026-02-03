@@ -153,7 +153,7 @@ function ShoppingHeader() {
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
           <HousePlug className="h-5 w-5 md:h-6 md:w-6" />
-          <span className="font-bold text-sm md:text-base lg:text-lg">BlessedManAutos</span>
+          <span className="font-bold text-sm md:text-base lg:text-lg">EMABLEPARTS</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>
