@@ -7,7 +7,7 @@ function AuthLayout() {
         <div className="max-w-md space-y-6 text-center text-primary-foreground">
           <div className="mb-6">
             <img
-              src="/src/assets/blessedman.jpg"
+              src="/src/assets/emable.jpeg"
               alt="EMABLEPARTS Logo"
               className="w-32 h-32 mx-auto rounded-full shadow-lg object-cover"
             />
