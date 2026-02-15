@@ -143,7 +143,7 @@ function ShoppingCheckout() {
           <div className="mt-4 md:mt-6 space-y-4">
             <div className="flex justify-between text-base md:text-lg">
               <span className="font-bold">Total</span>
-              <span className="font-bold">₦{totalCartAmount}</span>
+              <span className="font-extrabold">₦{totalCartAmount.toLocaleString()}</span>
             </div>
             <div className="space-y-3 md:space-y-4">
               <h3 className="text-base md:text-lg font-semibold">Payment Method</h3>

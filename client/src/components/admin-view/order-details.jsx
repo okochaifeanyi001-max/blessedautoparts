@@ -82,7 +82,7 @@ function AdminOrderDetailsView({ orderDetails }) {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontWeight: '500', color: '#6c757d' }}>Order Price:</span>
-                <Label style={{ fontWeight: 'bold', color: '#28a745', fontSize: '16px' }}>₦{orderDetails?.totalAmount}</Label>
+                <Label style={{ fontWeight: '900', color: '#28a745', fontSize: '16px' }}>₦{orderDetails?.totalAmount?.toLocaleString()}</Label>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontWeight: '500', color: '#6c757d' }}>Payment Method:</span>
@@ -138,7 +138,7 @@ function AdminOrderDetailsView({ orderDetails }) {
                     }}>
                       <span style={{ fontWeight: '500', color: '#343a40' }}>{item.title}</span>
                       <span style={{ color: '#6c757d' }}>Qty: {item.quantity}</span>
-                      <span style={{ fontWeight: 'bold', color: '#28a745' }}>₦{item.price}</span>
+                      <span style={{ fontWeight: '900', color: '#28a745' }}>₦{item.price?.toLocaleString()}</span>
                     </li>
                   ))
                 : <li style={{ textAlign: 'center', color: '#6c757d', fontStyle: 'italic', padding: '20px' }}>No items found</li>}

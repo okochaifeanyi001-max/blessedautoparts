@@ -105,6 +105,15 @@ export const addProductFormElements = [
     type: "number",
     placeholder: "Enter total stock",
   },
+  {
+    label: "Condition",
+    name: "condition",
+    componentType: "select",
+    options: [
+      { id: "NEW", label: "NEW" },
+      { id: "USED", label: "USED" },
+    ],
+  },
 ];
 
 export const shoppingViewHeaderMenuItems = [
@@ -166,6 +175,10 @@ export const filterOptions = {
     { id: "jeep", label: "Jeep" },
     { id: "cadillac", label: "Cadillac" },
     { id: "gmc", label: "GMC" },
+  ],
+  condition: [
+    { id: "NEW", label: "NEW" },
+    { id: "USED", label: "USED" },
   ],
 };
 

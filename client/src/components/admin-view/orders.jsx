@@ -89,7 +89,7 @@ function AdminOrdersView() {
                           {orderItem?.orderStatus}
                         </Badge>
                       </TableCell>
-                      <TableCell style={{ padding: '12px', fontWeight: 'bold', color: '#28a745' }}>₦{orderItem?.totalAmount}</TableCell>
+                      <TableCell style={{ padding: '12px', fontWeight: '900', color: '#28a745' }}>₦{orderItem?.totalAmount?.toLocaleString()}</TableCell>
                       <TableCell style={{ padding: '12px' }}>
                         <Dialog
                           open={openDetailsDialog}

@@ -11,6 +11,11 @@ const ProductSchema = new mongoose.Schema(
     salePrice: Number,
     totalStock: Number,
     averageReview: Number,
+    condition: {
+      type: String,
+      enum: ["NEW", "USED"],
+      default: "NEW",
+    },
   },
   { timestamps: true },
 );

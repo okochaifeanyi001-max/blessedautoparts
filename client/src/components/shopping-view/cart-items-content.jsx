@@ -104,12 +104,12 @@ function UserCartItemsContent({ cartItem }) {
         </div>
       </div>
       <div className="flex flex-col items-end gap-2 flex-shrink-0">
-        <p className="font-semibold text-sm md:text-base">
+        <p className="font-extrabold text-sm md:text-base">
           ₦
           {(
             (cartItem?.salePrice > 0 ? cartItem?.salePrice : cartItem?.price) *
             cartItem?.quantity
-          ).toFixed(2)}
+          ).toLocaleString()}
         </p>
         <Trash
           onClick={() => handleCartItemDelete(cartItem)}

@@ -108,11 +108,11 @@ function ShoppingOrderDetailsView({ orderDetails }) {
             }}>
               <span style={{ fontWeight: '600', color: '#495057', fontSize: '14px' }}>Total Amount:</span>
               <span style={{
-                fontWeight: 'bold',
+                fontWeight: '900',
                 fontSize: '18px',
                 color: '#28a745'
               }}>
-                ₦{orderDetails?.totalAmount}
+                ₦{orderDetails?.totalAmount?.toLocaleString()}
               </span>
             </div>
 
@@ -265,10 +265,10 @@ function ShoppingOrderDetailsView({ orderDetails }) {
                     <div style={{
                       textAlign: 'right',
                       fontSize: '18px',
-                      fontWeight: 'bold',
+                      fontWeight: '900',
                       color: '#28a745'
                     }}>
-                      ₦{item.price}
+                      ₦{item.price?.toLocaleString()}
                     </div>
                   </div>
                 ))

@@ -30,6 +30,15 @@ function ShoppingProductTile({
               Sale
             </Badge>
           ) : null}
+          {product?.condition && (
+            <Badge className={`absolute top-2 right-2 text-xs font-semibold ${
+              product.condition === "NEW" 
+                ? "bg-green-500 hover:bg-green-600" 
+                : "bg-blue-500 hover:bg-blue-600"
+            }`}>
+              {product.condition}
+            </Badge>
+          )}
         </div>
         <CardContent className="p-3 md:p-4 flex-grow">
           <h2 className="text-base md:text-lg lg:text-xl font-bold mb-2 line-clamp-2">{product?.title}</h2>
@@ -44,14 +53,14 @@ function ShoppingProductTile({
           <div className="flex justify-between items-center mb-2">
             <span
               className={`${
-                product?.salePrice > 0 ? "line-through" : ""
-              } text-base md:text-lg font-semibold text-primary`}
+                product?.salePrice > 0 ? "line-through font-bold text-gray-500" : "font-semibold"
+              } text-base md:text-lg text-primary`}
             >
-              ₦{product?.price}
+              ₦{product?.price?.toLocaleString()}
             </span>
             {product?.salePrice > 0 ? (
-              <span className="text-base md:text-lg font-semibold text-primary">
-                ₦{product?.salePrice}
+              <span className="text-base md:text-lg font-extrabold text-primary">
+                ₦{product?.salePrice?.toLocaleString()}
               </span>
             ) : null}
           </div>

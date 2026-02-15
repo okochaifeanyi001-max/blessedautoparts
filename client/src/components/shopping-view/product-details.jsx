@@ -9,6 +9,7 @@ import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { useToast } from "../ui/use-toast";
 import { setProductDetails } from "@/store/shop/products-slice";
 import { Label } from "../ui/label";
+import { Badge } from "../ui/badge";
 import StarRatingComponent from "../common/star-rating";
 import { useEffect, useState } from "react";
 import { addReview, getReviews } from "@/store/shop/review-slice";
@@ -124,18 +125,29 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             <p className="text-muted-foreground text-base md:text-lg lg:text-2xl mb-3 md:mb-4 lg:mb-5 mt-2 md:mt-3 lg:mt-4">
               {productDetails?.description}
             </p>
+            {productDetails?.condition && (
+              <div className="mb-3">
+                <Badge className={`text-xs font-semibold ${
+                  productDetails.condition === "NEW" 
+                    ? "bg-green-500 hover:bg-green-600" 
+                    : "bg-blue-500 hover:bg-blue-600"
+                }`}>
+                  {productDetails.condition}
+                </Badge>
+              </div>
+            )}
           </div>
           <div className="flex items-center justify-between flex-wrap gap-2">
             <p
-              className={`text-2xl md:text-3xl font-bold text-primary ${
-                productDetails?.salePrice > 0 ? "line-through" : ""
+              className={`text-2xl md:text-3xl text-primary ${
+                productDetails?.salePrice > 0 ? "line-through font-bold text-gray-500" : "font-bold"
               }`}
             >
-              ₦{productDetails?.price}
+              ₦{productDetails?.price?.toLocaleString()}
             </p>
             {productDetails?.salePrice > 0 ? (
-              <p className="text-xl md:text-2xl font-bold text-muted-foreground">
-                ₦{productDetails?.salePrice}
+              <p className="text-xl md:text-2xl font-extrabold text-primary">
+                ₦{productDetails?.salePrice?.toLocaleString()}
               </p>
             ) : null}
           </div>

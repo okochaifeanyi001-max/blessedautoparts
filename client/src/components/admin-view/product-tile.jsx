@@ -23,13 +23,13 @@ function AdminProductTile({
           <div className="flex justify-between items-center mb-2">
             <span
               className={`${
-                product?.salePrice > 0 ? "line-through" : ""
-              } text-lg font-semibold text-primary`}
+                product?.salePrice > 0 ? "line-through font-bold text-gray-500" : "font-semibold"
+              } text-lg text-primary`}
             >
-              ₦{product?.price}
+              ₦{product?.price?.toLocaleString()}
             </span>
             {product?.salePrice > 0 ? (
-              <span className="text-lg font-bold">₦{product?.salePrice}</span>
+              <span className="text-lg font-extrabold text-primary">₦{product?.salePrice?.toLocaleString()}</span>
             ) : null}
           </div>
         </CardContent>
